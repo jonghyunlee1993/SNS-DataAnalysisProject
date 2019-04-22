@@ -35,10 +35,12 @@ def face_detector(image_files, show_figure):
 
     for ind, name in enumerate(image_files):
         img = cv.imread(name)
-        gray=cv.cvtColor(img, cv.COLOR_RGB2GRAY)
+        gray = cv.cvtColor(img, cv.COLOR_RGB2GRAY)
 
-        my_path=r"/home/mnd/anaconda3/share/OpenCV/haarcascades/"
-        face_cascade = cv.CascadeClassifier(my_path + 'haarcascade_frontalface_default.xml')
+        # CV_path = r"/home/mnd/anaconda3/share/OpenCV/haarcascades/" # without virtual env
+        CV_path = r"/home/mnd/anaconda3/envs/open_cv/share/OpenCV/haarcascades/" # with virtual env
+
+        face_cascade = cv.CascadeClassifier(CV_path + 'haarcascade_frontalface_default.xml')
 
         faces = face_cascade.detectMultiScale(gray, 1.3, 5)
         result_image = img.copy()
