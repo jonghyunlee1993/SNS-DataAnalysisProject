@@ -9,7 +9,7 @@ cd(dir_root)
 
 subjects = ls('sns*');
 
-for sub = 3:size(subjects,1)
+for sub = 1:size(subjects,1)
     disp(['Subject number: ' subjects(sub,:)])
     temp_folder = [subjects(sub,:)];
     temp_save = [dir_results filesep temp_folder];
