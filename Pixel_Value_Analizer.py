@@ -39,15 +39,20 @@ for Sub in Subjects:
 			# plt.show()
 
 			mean_r = np.mean(r)
+			var_r = np.var(r)
 			mean_g = np.mean(g)
+			var_g = np.var(g)
 			mean_b = np.mean(b)
+			var_b = np.var(b)
 
 			h_peaks = len(peaks)
 			mean_s = np.mean(s)
+			var_s = np.var(s)
 			mean_v = np.mean(v)
+			var_v = np.var(v)
 
-			ImgResult = [mean_r, mean_g, mean_b, h_peaks, mean_s, mean_v]
-			ResultsHeader = ['R', 'G', 'B', 'H', 'S', 'V']
+			ImgResult = [mean_r, var_r, mean_g, var_g, mean_b, var_b, h_peaks, mean_s, var_s, mean_v, var_v]
+			ResultsHeader = ['R_mean', 'R_var', 'G_mean', 'G_var', 'B_mean', 'B_var', 'H_peaks', 'S_mean', 'S_var', 'V_mean', ' V_var']
 
 			try:
 				with open (r'PixelValue_' + Sub + '.csv', 'a', newline='') as f:
