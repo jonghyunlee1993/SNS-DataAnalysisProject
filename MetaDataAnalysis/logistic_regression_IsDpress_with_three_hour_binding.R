@@ -35,3 +35,4 @@ summary(model7)
 model8 = glm(IsDepress ~ X0, 
              family = 'binomial'(link = 'logit'), data = data)
 summary(model8)
+pR2(model8)
