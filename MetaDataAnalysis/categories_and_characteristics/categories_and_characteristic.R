@@ -1,9 +1,9 @@
 rm(list=ls())
 
-data = read.csv("~/Downloads/sns_result_total.csv")
-uptime = read.csv("../data/upload_time_result_by_sub.csv")
+setwd("~/GitRepo/SNS_Data_Analyses/")
+data = read.csv("./data/sns_res_total.csv")
 
-data = data[-c(5,15),]
+data = data[-c(5,15), ]
 uptime = uptime[,-c(1, length(uptime))]
 
 find_idx = function(pattern, data){
@@ -60,9 +60,16 @@ start = find_idx("extraversion", data)
 end = find_idx("social_media_2", data)
 
 make_full_model = function(pattern){
-  data = data.frame(y = find_idx(pattern, data)[1], data[, start:end])
-  model = lm(y ~., data = data)
-  print(summary(model))
+  model_data = data.frame(y = data[, find_idx(pattern, data)[1]], data[, start:end])
+  model_data[model_data[, 1] < 0.0001, 1] = NA
+  model_data = na.omit(model_data)
+  
+  model = lm(y ~., data = model_data)
+  
+  # step_model = stepAIC(model, direction = "both", trace = FALSE)
+  step_model = step(model, direction = "both", trace = 0)
+  print(summary(step_model))
+  # print(summary(model))
   # return(model)
 }
 
