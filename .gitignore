@@ -1,9 +1,12 @@
 data
 data/*
+results
+results/*
 weights
 weigths/*
 
 pynb_checkpoints
+.ipynb_checkpoints/*
 */.ipynb_checkpoints/*
 
 # IPython
